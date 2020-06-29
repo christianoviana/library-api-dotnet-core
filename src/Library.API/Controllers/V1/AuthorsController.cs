@@ -32,7 +32,6 @@ namespace Library.API.Controllers.V1
                                  ILogger<AuthorsController> logger,
                                  IMapper mapper)
         {
-            this.repositoryBookAuthor = repositoryBookAuthor;
             this.repository = repository;
             this.logger = logger;
             this.mapper = mapper;

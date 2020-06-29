@@ -183,11 +183,7 @@ namespace Library.API
                             },
                             new List<string>()
                         }
-                    });
-                    
-
-                    // Add a custom filter for settint the default values  
-                    o.OperationFilter<SwaggerFilter>();
+                    });                    
                 });
             }          
             
