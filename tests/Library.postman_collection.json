@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "1d47f72c-5189-4a79-a677-f39b70d3cdcb",
+		"name": "Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4566/api/v1/books?page=1&size=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"books"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET {ID}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4566/api/v1/books/6d968a9d-945b-4091-8d77-63b56991c1c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"books",
+								"6d968a9d-945b-4091-8d77-63b56991c1c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Bearer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5Mjc5MzY2MiwiZXhwIjoxNTkyNzk1NDYyLCJpYXQiOjE1OTI3OTM2NjJ9.nAKPfSXipZb1yNtoBES_PXqkiRIb9Fmwk3kmH3lr510",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n     \"name\":\"O ultimo diario\",\n     \"description\":\"O ....\",\n     \"pages\": 58,\n     \"date\":\"2019/04/01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4566/api/v1/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Bearer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5Mjc5MTg1MiwiZXhwIjoxNTkyNzkzNjUyLCJpYXQiOjE1OTI3OTE4NTJ9.yF3xb8t-nGOfqdvm3YsQfwjhGPHhtf71Ng4XunwUScY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n     \"name\":\"O ultimo diario\",\n     \"description\":\"O filme se baseia ....\",\n     \"pages\": 58,\n     \"date\":\"2019/04/01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4566/api/v1/books/98995632-3837-42da-90b7-79520eda92dc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"books",
+								"98995632-3837-42da-90b7-79520eda92dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Bearer Authors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5Mjc5MzY2MiwiZXhwIjoxNTkyNzk1NDYyLCJpYXQiOjE1OTI3OTM2NjJ9.nAKPfSXipZb1yNtoBES_PXqkiRIb9Fmwk3kmH3lr510",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[    \n     {\n          \"id\":\"0495b152-dbee-42fe-8231-08da6aceb26c\"\n     }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4566/api/v1/books/485890fe-2edd-47b6-9e35-3cdb8ba1877e/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"books",
+								"485890fe-2edd-47b6-9e35-3cdb8ba1877e",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL - Bearer Authors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5Mjc5MzY2MiwiZXhwIjoxNTkyNzk1NDYyLCJpYXQiOjE1OTI3OTM2NjJ9.nAKPfSXipZb1yNtoBES_PXqkiRIb9Fmwk3kmH3lr510",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4566/api/v1/books/98995632-3837-42da-90b7-79520eda92dc/authors/0495b152-dbee-42fe-8231-08da6aceb26c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"books",
+								"98995632-3837-42da-90b7-79520eda92dc",
+								"authors",
+								"0495b152-dbee-42fe-8231-08da6aceb26c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL - Bearer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5Mjc5MzY2MiwiZXhwIjoxNTkyNzk1NDYyLCJpYXQiOjE1OTI3OTM2NjJ9.nAKPfSXipZb1yNtoBES_PXqkiRIb9Fmwk3kmH3lr510",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4566/api/v1/books/98995632-3837-42da-90b7-79520eda92dc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"books",
+								"98995632-3837-42da-90b7-79520eda92dc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "generate_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"christiano\",\n\t\"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2412/api/login/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2412",
+							"path": [
+								"api",
+								"login",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5MDYyNDkwMSwiZXhwIjoxNTkwNjI1MjAxLCJpYXQiOjE1OTA2MjQ5MDF9.xeGJMk10OCz89GfBVqIQiPH3EdNiPuieLQsKiKHwAAg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2412/api/login/validate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2412",
+							"path": [
+								"api",
+								"login",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4566/api/v1/authors?page=1&size=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET {ID}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4566/api/v1/authors/5338d327-868f-4747-b8da-4f0fb3223c0b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"5338d327-868f-4747-b8da-4f0fb3223c0b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET {ID} Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4566/api/v1/authors/0495b152-dbee-42fe-8231-08da6aceb26c/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"0495b152-dbee-42fe-8231-08da6aceb26c",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Bearer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5Mjc4NTg0OSwiZXhwIjoxNTkyNzg3NjQ5LCJpYXQiOjE1OTI3ODU4NDl9.cCPL8myeeNNwMneFPNqwGAY7H2zNP8cbNaSa41a6WlU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Rebeca\",\n    \"last_name\": \"de Araujo Lopes\",\n    \"birthday\": \"1997/04/29\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4566/api/v1/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Bearer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5Mjc4NTg0OSwiZXhwIjoxNTkyNzg3NjQ5LCJpYXQiOjE1OTI3ODU4NDl9.cCPL8myeeNNwMneFPNqwGAY7H2zNP8cbNaSa41a6WlU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"José Christiano\",\n    \"last_name\": \"Viana Junior\",\n    \"birthday\": \"1994/02/03\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4566/api/v1/authors/5338d327-868f-4747-b8da-4f0fb3223c0b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"5338d327-868f-4747-b8da-4f0fb3223c0b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL - Bearer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNocmlzdGlhbm8iLCJyb2xlIjoibWFuYWdlciIsIm5iZiI6MTU5Mjc5MzY2MiwiZXhwIjoxNTkyNzk1NDYyLCJpYXQiOjE1OTI3OTM2NjJ9.nAKPfSXipZb1yNtoBES_PXqkiRIb9Fmwk3kmH3lr510",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4566/api/v1/authors/0495b152-dbee-42fe-8231-08da6aceb26c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4566",
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"0495b152-dbee-42fe-8231-08da6aceb26c"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
