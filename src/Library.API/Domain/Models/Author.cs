@@ -9,6 +9,6 @@ namespace Library.API.Domain.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? Birthday { get; set; }
-        public virtual IEnumerable<BookAuthor> BookAuthors { get; set; }
+        public IEnumerable<BookAuthor> BookAuthors { get; set; }
     }
 }

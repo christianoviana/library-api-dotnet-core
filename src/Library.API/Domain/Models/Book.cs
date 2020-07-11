@@ -10,6 +10,6 @@ namespace Library.API.Domain.Models
         public String Description { get; set; }
         public int Pages { get; set; }
         public DateTime Date { get; set; }       
-        public virtual IEnumerable<BookAuthor> BookAuthors { get; set; }
+        public IEnumerable<BookAuthor> BookAuthors { get; set; }
     }
 }
