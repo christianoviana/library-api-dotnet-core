@@ -2,7 +2,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Library.API.Authorization.Service
@@ -34,10 +36,14 @@ namespace Library.API.Authorization.Service
             HttpClient httpClient = this.ClientFactory.CreateClient("sts");
             httpClient.DefaultRequestHeaders.Add("contentType", "application/json");
             var _token = new { token = token };
-            HttpResponseMessage response = await httpClient.PostAsJsonAsync("login/validate", _token);
+
+            var content = new StringContent(JsonSerializer.Serialize(_token));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await httpClient.PostAsync("login/validate", content);
                         
             // Log in file
-            var content = await response.Content.ReadAsStringAsync();
+            var result = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
                 return await Task.FromResult(true);

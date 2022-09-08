@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -34,14 +35,14 @@ namespace Library.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
             Environment = env;
         }
 
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment Environment { get; }
+        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -62,7 +63,7 @@ namespace Library.API
                 options.EnableEndpointRateLimiting = true;
                 options.DisableRateLimitHeaders = true;
                 options.StackBlockedRequests = false;
-                options.IpWhitelist = new List<string>() { "192.168.0.0/24" };
+                //options.IpWhitelist = new List<string>() { "192.168.0.0/24" };
                 //options.EndpointWhitelist = new List<string>() { "get:*api/v1/books*" };
                 options.GeneralRules = new System.Collections.Generic.List<RateLimitRule>()
                 {
@@ -103,8 +104,9 @@ namespace Library.API
             services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
             services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
             #endregion
-                      
+
             services.AddMvc(setup =>
             {
                 setup.ReturnHttpNotAcceptable = true;
@@ -121,8 +123,10 @@ namespace Library.API
                     return new BadRequestObjectResult(error);
                 };
             })
-            .AddJsonOptions(o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            .AddJsonOptions(o =>
+            {
+                o.JsonSerializerOptions.IgnoreNullValues = true;
+            });
 
             if (enableFlags.UseSqlite)
             {                
@@ -196,11 +200,10 @@ namespace Library.API
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, 
-                              IHostingEnvironment env, 
                               IOptionsMonitor<EnableFlags> options,
                               IServiceProvider serviceProvider)
         {
-            if (env.IsDevelopment())
+            if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
 
@@ -249,6 +252,9 @@ namespace Library.API
             //});
             #endregion
 
+            app.UseRouting();
+
+            app.UseAuthorization();
             app.UseAuthentication();  
             app.UseHttpsRedirection();
 
@@ -265,7 +271,10 @@ namespace Library.API
                 });
             }           
 
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

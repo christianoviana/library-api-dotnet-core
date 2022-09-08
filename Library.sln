@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.API", "src\Library.API\Library.API.csproj", "{96AE3DC3-7C4D-4F91-8F62-FE171B2B79FD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.STS", "src\Library.STS\Library.STS.csproj", "{046DD278-1C08-4793-994C-D4F9EB381754}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.API.Test", "Library.API.Test\Library.API.Test.csproj", "{36C612C8-7FEF-4240-B1FA-B55091B3540B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{046DD278-1C08-4793-994C-D4F9EB381754}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{046DD278-1C08-4793-994C-D4F9EB381754}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{046DD278-1C08-4793-994C-D4F9EB381754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36C612C8-7FEF-4240-B1FA-B55091B3540B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C612C8-7FEF-4240-B1FA-B55091B3540B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C612C8-7FEF-4240-B1FA-B55091B3540B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C612C8-7FEF-4240-B1FA-B55091B3540B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,7 +23,6 @@ namespace Library.API.Controllers.V1
     [ApiController]
     public class AuthorsController : ControllerBase
     {
-        private IRepository<BookAuthor> repositoryBookAuthor;
         private IAuthorRepository repository;
         private IMapper mapper;
         private ILogger<AuthorsController> logger;
